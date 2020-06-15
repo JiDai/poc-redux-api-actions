@@ -13,14 +13,14 @@ export function generateReducer(thunk, storeKey, tranform = null) {
             state[storeKey].isError = null;
         },
         [thunk.pending]: (state, action) => {
-            state[storeKey] = {};
+            state[storeKey].data = {};
             state[storeKey].isPending = true;
             state[storeKey].isError = null;
         },
         [thunk.rejected]: (state, action) => {
-            state[storeKey] = {};
+            state[storeKey].data = {};
             state[storeKey].isPending = true;
-            state[storeKey].isError = 'error';
+            state[storeKey].isError = action.error;
         },
     };
 }
